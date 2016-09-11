@@ -72,7 +72,7 @@ $(document).ready(function() {
 
 					vidArray.push(response.data[i].images.original.mp4);
 
-					console.log(response.data[i].images.original.mp4);
+					
 
 				}
 
@@ -116,9 +116,18 @@ $(document).ready(function() {
 
 		var parentSel =  $(this).parent();
 
-		var newVid = $('<video autoplay loop><source class="heroVidOn" src="' + vidArray[nowSel.attr(' data-number')] + '" type="video/mp4"> </video>');
+		var video = $('<video />', {
+       		class: 'heroVidOn',
+        	src: vidArray[nowSel.attr('data-number')],
+        	type: 'video/mp4',
+        	controls: false,
+        	autoplay: true,
+        	loop: true
+    	});
 
-		parentSel.prepend(newVid);
+    	video.attr('data-state', 'playing')
+
+		parentSel.prepend(video);
 
     	$(this).remove();
 
@@ -126,7 +135,21 @@ $(document).ready(function() {
 
 	$(document.body).on('click', '.heroVidOn', function() {
 
-    	
+    	if($(this).attr('data-state') == 'playing'){
+
+    		this.pause();
+
+    		$(this).attr('data-state', 'paused');
+
+    	}
+
+    	else{
+
+    		this.play();
+
+    		$(this).attr('data-state', 'playing');
+
+    	}
 
 	});
 
