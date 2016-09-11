@@ -50,7 +50,7 @@ $(document).ready(function() {
 
 		var heroParameter = $(this).attr('data-name');
 
-		var heroUrl = "http://api.giphy.com/v1/gifs/search?q=" + heroParameter + "&api_key=dc6zaTOxFJmzC&limit=10";
+		var heroUrl = "https://crossorigin.me/http://api.giphy.com/v1/gifs/search?q=" + heroParameter + "&api_key=dc6zaTOxFJmzC&limit=10";
 
 		vidArray = [];
 
